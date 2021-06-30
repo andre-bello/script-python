@@ -9,5 +9,5 @@ You need lib zabbix-api and pip
 
 ```sh
 # dnf -y install python3
-# pip3 install zabbix-api
+# pip3 install pyzabbix
 # pip3 install progressbar
