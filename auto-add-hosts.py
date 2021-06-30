@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+#author: Janssen dos Reis Lima
+#modified André Bello
+
 from pyzabbix import ZabbixAPI
 import csv
 from progressbar import ProgressBar, Percentage, ETA, ReverseBar, RotatingMarker, Timer
