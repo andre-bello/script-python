@@ -1,0 +1,528 @@
+zabbix_export:
+  version: '5.2'
+  date: '2021-11-22T17:20:15Z'
+  groups:
+    -
+      name: Templates/Applications
+  templates:
+    -
+      template: 'Template App Zabbix Proxy'
+      name: 'Template App Zabbix Proxy'
+      groups:
+        -
+          name: Templates/Applications
+      applications:
+        -
+          name: 'Zabbix proxy'
+      items:
+        -
+          name: 'Zabbix Proxy Disponibilidade'
+          type: INTERNAL
+          key: 'zabbix[host,agent,available]'
+          delay: 2m
+          history: 1w
+          status: DISABLED
+          applications:
+            -
+              name: 'Zabbix proxy'
+          valuemap:
+            name: 'ICMP status'
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,configuration syncer,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix configuration syncer processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,data sender,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix data sender processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,discoverer,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          allowed_hosts: localhost
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix discoverer processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,heartbeat sender,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix heartbeat sender processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,history syncer,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix history syncer processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,housekeeper,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(30m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(30m)}<65'
+              name: 'Zabbix housekeeper processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,http poller,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix http poller processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,icmp pinger,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix icmp pinger processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,ipmi manager,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix ipmi manager processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,ipmi poller,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix ipmi poller processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,java poller,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix java poller processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,poller,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          allowed_hosts: localhost
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix poller processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,self-monitoring,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix self-monitoring processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,snmp trapper,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix snmp trapper processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,task manager,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix task manager processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,trapper,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix trapper processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Zabbix $4 $2 processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,unreachable poller,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{avg(10m)}>75'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{avg(10m)}<65'
+              name: 'Zabbix unreachable poller processes more than 75% busy'
+              priority: WARNING
+        -
+          name: 'Utilization of vmware data collector processes, in %'
+          type: INTERNAL
+          key: 'zabbix[process,vmware collector,avg,busy]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          preprocessing:
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          request_method: POST
+        -
+          name: 'Zabbix Proxy heartbeat'
+          type: INTERNAL
+          key: 'zabbix[proxy,"{HOST.HOST}",lastaccess]'
+          delay: 2m
+          history: 1w
+          units: unixtime
+          applications:
+            -
+              name: 'Zabbix proxy'
+          triggers:
+            -
+              expression: '{fuzzytime({$FUZZYTIME})}=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: '{sum(#20)}<>0'
+              name: 'Zabbix Proxy sem enviar dados a mais de {$FUZZYTIME} (minutos) - Ambiente sem Monitoramento.'
+              priority: DISASTER
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: Zabbix-Proxy
+                  value: '{HOST.NAME}'
+        -
+          name: 'Zabbix queue over $2'
+          type: INTERNAL
+          key: 'zabbix[queue,10m]'
+          delay: 10m
+          history: 1w
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{min(10m)}>100'
+              name: 'More than 100 items having missing data for more than 10 minutes'
+              priority: WARNING
+              description: 'zabbix[queue,10m] item is collecting data about how many items are missing data for more than 10 minutes (next parameter)'
+        -
+          name: 'Zabbix queue'
+          type: INTERNAL
+          key: 'zabbix[queue]'
+          delay: 5m
+          history: 1w
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+        -
+          name: 'Zabbix configuration cache, % free'
+          type: INTERNAL
+          key: 'zabbix[rcache,buffer,pfree]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{min(10m)}<25'
+              name: 'Less than 25% free in the configuration cache'
+              priority: WARNING
+              description: 'Consider increasing CacheSize in the zabbix_server.conf configuration file'
+        -
+          name: 'Zabbix vmware cache, % used'
+          type: INTERNAL
+          key: 'zabbix[vmware,buffer,pused]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          preprocessing:
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+        -
+          name: 'Zabbix $2 write cache, % free'
+          type: INTERNAL
+          key: 'zabbix[wcache,history,pfree]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{min(10m)}<25'
+              name: 'Less than 25% free in the history cache'
+              priority: WARNING
+        -
+          name: 'Zabbix history index cache, % free'
+          type: INTERNAL
+          key: 'zabbix[wcache,index,pfree]'
+          delay: 5m
+          history: 1w
+          value_type: FLOAT
+          units: '%'
+          applications:
+            -
+              name: 'Zabbix proxy'
+          request_method: POST
+          triggers:
+            -
+              expression: '{min(10m)}<25'
+              name: 'Less than 25% free in the history index cache'
+              priority: WARNING
+      macros:
+        -
+          macro: '{$FUZZYTIME}'
+          value: 5m
+      dashboards:
+        -
+          name: 'Zabbix proxy health'
+          widgets:
+            -
+              type: GRAPH_CLASSIC
+              width: '12'
+              height: '6'
+            -
+              type: GRAPH_CLASSIC
+              x: '12'
+              width: '12'
+              height: '6'
+            -
+              type: GRAPH_CLASSIC
+              'y': '6'
+              width: '12'
+              height: '5'
+            -
+              type: GRAPH_CLASSIC
+              x: '12'
+              'y': '6'
+              width: '12'
+              height: '5'
+  value_maps:
+    -
+      name: 'ICMP status'
+      mappings:
+        -
+          value: '0'
+          newvalue: Down
+        -
+          value: '1'
+          newvalue: Up
+        -
+          value: '2'
+          newvalue: Down
